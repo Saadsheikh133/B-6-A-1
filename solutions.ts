@@ -26,8 +26,6 @@ const getLength: InputFormat = (inputLength) => {
   }
 };
 
-
-
 class Person {
   name: string;
   age: number;
@@ -37,8 +35,23 @@ class Person {
     this.age = age;
   }
 
-    getDetails() {
-      return `Name: ${this.name}, Age: ${this.age}`
+  getDetails() {
+    return `Name: ${this.name}, Age: ${this.age}`;
   }
 }
+
+
+interface Item {
+    title: string;
+  rating: number;
+}
+
+
+const filterByRating = (items: Item[]): Item[] => {
+  const filteredItems = items.filter((item) => item.rating >= 4);
+  return filteredItems;
+};
+
+
+
 
