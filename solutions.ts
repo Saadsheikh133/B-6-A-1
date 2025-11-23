@@ -1,6 +1,8 @@
-type Input = (input: number | string | boolean) => number | string | boolean;
+type InputFormat = (
+  input: number | string | boolean
+) => number | string | boolean;
 
-const formatValue: Input = (input) => {
+const formatValue: InputFormat = (input) => {
   if (typeof input === "string") {
     return input.toUpperCase();
   } else if (typeof input === "number") {
@@ -11,3 +13,16 @@ const formatValue: Input = (input) => {
     return "Please give the correct input!!";
   }
 };
+
+type InputLength = (inputLength: string | any[]) => number;
+
+const getLength: InputFormat = (inputLength) => {
+  if (typeof inputLength === "string") {
+    return inputLength.length;
+  } else if (Array.isArray(inputLength)) {
+    return inputLength.length;
+  } else {
+    return "Invalid type!!!!";
+  }
+};
+
