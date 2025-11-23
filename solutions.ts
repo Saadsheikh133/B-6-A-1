@@ -40,18 +40,24 @@ class Person {
   }
 }
 
-
 interface Item {
-    title: string;
+  title: string;
   rating: number;
 }
-
 
 const filterByRating = (items: Item[]): Item[] => {
   const filteredItems = items.filter((item) => item.rating >= 4);
   return filteredItems;
 };
 
+type Users = {
+  id: number;
+  name: string;
+  email: string;
+  isActive: boolean;
+};
 
-
-
+const filterActiveUsers = (users: Users[]): Users[] => {
+  const result = users.filter((user) => user.isActive === true);
+  return result;
+};
