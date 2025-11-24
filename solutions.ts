@@ -84,7 +84,7 @@ type Arr = (string | number)[];
 const getUniqueValues: GetUniqueValues = (arr1, arr2) => {
   let uniqueArr: Arr = [];
 
-  const contains = (arr: Arr, value: string | number):boolean => {
+  const contains = (arr: Arr, value: string | number): boolean => {
     for (let i = 0; i < arr.length; i++) {
       if (arr[i] === value) {
         return true;
@@ -108,3 +108,22 @@ const getUniqueValues: GetUniqueValues = (arr1, arr2) => {
   return uniqueArr;
 };
 
+type Product = {
+  name: string;
+  price: number;
+  quantity: number;
+  discount?: number;
+};
+
+const calculateTotalPrice = (items: Product[]): number => {
+  return items.reduce((preTotal, item) => {
+    const total = item.price * item.quantity;
+    let subtotal = total;
+    if (item.discount !== undefined) {
+      const discount = total * (item.discount / 100);
+      subtotal = total - discount;
+    }
+
+    return preTotal + subtotal;
+  }, 0);
+};
